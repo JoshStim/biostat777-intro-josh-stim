@@ -1,6 +1,14 @@
 ---
-title: "biostat777-intro-josh-stim"
+title: "Josh Stim"
+image: headshot.jpg
+toc: false
+about: 
+  template: trestles
+  image-shape: rounded
+  image-width: 20em
 ---
+        
+# page content excluded for brevity ~
 
 This is a Quarto website.
 
