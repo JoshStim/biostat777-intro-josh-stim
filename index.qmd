@@ -8,8 +8,6 @@ about:
   image-width: 20em
 ---
         
-# page content excluded for brevity ~
+# Hello, I'm Josh.
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am a first year Biostatistics ScM candidate at the Johns Hopkins Bloomberg School of Public Health. While I am still developing my research interests, my undergraduate education and subsequent research experiences were devoted to understanding brain function and its relation to psychiatric illness.
