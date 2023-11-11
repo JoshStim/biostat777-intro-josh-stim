@@ -5,3 +5,5 @@ the skills I am learning in my graduate program. The goal of this website is to 
 
 Briefly, my personal website was created using Quarto through RStudio. It contains a Landing (home) page, an About page, and a page containing an example data analysis. 
 The website was deployed through github pages.
+
+You may find the website here: https://joshstim.github.io/biostat777-intro-josh-stim/
