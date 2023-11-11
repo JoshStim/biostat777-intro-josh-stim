@@ -2,4 +2,25 @@
 title: "About"
 ---
 
-About this site
+I am currently studying biostatistics at the Johns Hopkins Bloomberg School of Public Health. Prior to entering this program, I worked for 5 years as a research professional under Dr. Scott Sponheim at the Cognition & Brain (CAB) lab at the University of Minnesota, Twin-cities. During my time there, I worked on a longitudinal study devoted to using magnetoencephalography (MEG) and functional magnetic resonance imaging (fMRI) to examine the neural mechanisms that underlie the visual anomalies, such as hallucinations, in people with psychosis. My primary responsibilities included data pre-processing and analysis, as well as data collection and maintenance. Additional information on my professional experiences can be found on my [Linkedin page](https://www.linkedin.com/in/josh-stim-69a551141/).
+
+## Education
+
+**ScM candidate in Biostatistics** (2023 - present)| Johns Hopkins, Bloomberg School of Public Health
+
+**BS in Psychology, Neuroscience minor** (2014 - 2018)| University of Minnesota, Twin-cities
+
+## Experience
+
+**Research Professional** (2018 - 2023)| University of Minnesota, Twin-Cities: Department of Psychiatry and Behavioral Sciences
+
+**Volunteer Research Assistant** (2017 - 2023)| Minneapolis VA Medical Center: Department of Psychology
+
+**Visual Neuroscience Technician** (2019 - 2021)| University of Minnesota, Twin-Cities: Center for Magnetic Resonance Research
+
+## Publications
+* **Stim, J. J.**, Maresh, E. L., Van Voorhis, A. C., Kang, S. S., Luciana, M., Collins, P., Sponheim, S. R., & Urošević, S. (2023). **Neural abnormalities of reward processing in adolescents with bipolar disorders: An ERP study**. Biological psychology, 183, 108667. <https://doi.org/10.1016/j.biopsycho.2023.108667>
+
+* Sponheim, S. R., **Stim, J. J.**, Engel, S. A., & Pokorny, V. J. (2023). **Slowed alpha oscillations and percept formation in psychotic psychopathology**. Frontiers in psychology, 14, 1144107. <https://doi.org/10.3389/fpsyg.2023.1144107>
+
+* Maresh, E. L., **Stim, J. J.**, Van Voorhis, A. C., Kang, S. S., Luciana, M., Sponheim, S. R., & Urošević, S. (2019). **Neurophysiological correlates of cognitive control and approach motivation abnormalities in adolescent bipolar disorders**. Cognitive, affective & behavioral neuroscience, 19(3), 677–691. <https://doi.org/10.3758/s13415-019-00719-x>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Josh Stim - Example analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Josh Stim</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./example_analysis.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Example analysis</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-baltimore-orioles-a-historical-perspective" id="toc-the-baltimore-orioles-a-historical-perspective" class="nav-link active" data-scroll-target="#the-baltimore-orioles-a-historical-perspective">The Baltimore Orioles: A historical perspective</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#intended-audience" id="toc-intended-audience" class="nav-link" data-scroll-target="#intended-audience">Intended audience</a></li>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data Source</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data Wrangling</a></li>
+  <li><a href="#win-percentage-over-time" id="toc-win-percentage-over-time" class="nav-link" data-scroll-target="#win-percentage-over-time">Win Percentage Over Time</a></li>
+  <li><a href="#hit-frequency-over-time" id="toc-hit-frequency-over-time" class="nav-link" data-scroll-target="#hit-frequency-over-time">Hit Frequency Over Time</a></li>
+  <li><a href="#overall-batting-performance-over-time" id="toc-overall-batting-performance-over-time" class="nav-link" data-scroll-target="#overall-batting-performance-over-time">Overall Batting Performance Over Time</a></li>
+  <li><a href="#non-hit-batting-outcomes-over-time" id="toc-non-hit-batting-outcomes-over-time" class="nav-link" data-scroll-target="#non-hit-batting-outcomes-over-time">Non-hit Batting Outcomes Over Time</a></li>
+  <li><a href="#data-dictionary" id="toc-data-dictionary" class="nav-link" data-scroll-target="#data-dictionary">Data Dictionary</a></li>
+  <li><a href="#list-of-functions" id="toc-list-of-functions" class="nav-link" data-scroll-target="#list-of-functions">List of Functions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Example analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="the-baltimore-orioles-a-historical-perspective" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-baltimore-orioles-a-historical-perspective">The Baltimore Orioles: A historical perspective</h2>
+<p><img src="camden-yards-ballpark.jpeg" class="img-fluid" alt="Camden Yards: Home of the Baltimore Orioles"> This image of Camden Yards (home of the Baltimore Orioles) was obtained from <span class="citation" data-cites="Virtual_Backgrounds">(<a href="#ref-Virtual_Backgrounds" role="doc-biblioref"><span>“Virtual Backgrounds,”</span> n.d.</a>)</span>.</p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Based in Camden Yards in Baltimore, MD, the Orioles are beloved by many Baltimoreans. It is interesting to note, however, that they were not always located in Baltimore! In fact, the franchise began in Milwaukee, Wisconsin in 1901, where they were called the “Milwaukee Brewers” (not to be confused with the Milwaukee Brewers that exist today). In 1902, the franchise moved to St.&nbsp;Louis, where they stayed for 53 years until the end of 1953. At the time, they were one of two teams in St.&nbsp;Louis; the other team was the Cardinals (yes, St.&nbsp;Louis Cardinals). Finally, in 1954, the team moved to Baltimore where they came to be known as the Baltimore Orioles.</p>
+<p>As is common in most sports, baseball team performance varies over time. The nature of this variation depends on factors such as the quality of the athletes, changes to the rule book, and team strategies, among other things. Here, we examine how overall team performance (measured by win percentage) and batting performance of the Baltimore Orioles has changed since 1902.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because the frachise was in Milwaukee for only 1 year (1901), I decided to exclude this season from my analysis. In the following analysis, we look at 53 seasons of the St.&nbsp;Louis Browns (1902 - 1953), and 70 seasons of the Baltimore Orioles (1954 - 2023).</p>
+</div>
+</div>
+</section>
+<section id="objectives" class="level3">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<p>In particular, I seek to answer the following question about the Orioles:</p>
+<p>From 1902 to 2023,</p>
+<ol type="1">
+<li><p>How does winning percentage change over time?</p></li>
+<li><p>How does the frequency of different types of hits change over time?</p></li>
+<li><p>How does overall batting performance change over time?</p></li>
+<li><p>How does frequency of non-hit batting outcomes change over time?</p></li>
+</ol>
+</section>
+<section id="intended-audience" class="level3">
+<h3 class="anchored" data-anchor-id="intended-audience">Intended audience</h3>
+<p>This analysis is intended for anyone who is interested in baseball history. Even if you are not an Orioles fan, this analysis may still be of interest, since a number of the trends observed here likely reflect league-wide rule changes and gameplay tendencies.</p>
+</section>
+<section id="data-source" class="level3">
+<h3 class="anchored" data-anchor-id="data-source">Data Source</h3>
+<p>The data for this analysis were obtained from <span class="citation" data-cites="Stathead">(<a href="#ref-Stathead" role="doc-biblioref"><span>“Stathead Team Batting,”</span> n.d.</a>)</span>, which provides endless sports data on team and player performances at the game and season levels. As part of my analysis, I wanted to isolate seasons that corresponded to winning the world-series, the division, or the wildcard. I was able to determine which seasons these were by referencing <span class="citation" data-cites="Wikipedia_2023">(<a href="#ref-Wikipedia_2023" role="doc-biblioref"><span>“Baltimore Orioles”</span> 2023</a>)</span>.</p>
+<p>I decided to create my own data dictionary. You may find that at the end of this article.</p>
+</section>
+<section id="getting-started" class="level3">
+<h3 class="anchored" data-anchor-id="getting-started">Getting Started</h3>
+<p>For this analysis, I will use functions from the <code>tidyverse</code>, <code>readxl</code>, <code>patchwork</code>, and <code>knitr</code> libraries in R.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"patchwork"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"knitr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The data were downloaded from <span class="citation" data-cites="Stathead">(<a href="#ref-Stathead" role="doc-biblioref"><span>“Stathead Team Batting,”</span> n.d.</a>)</span> and will be imported into R using the <code>read_excel</code> function.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bmore.data.raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"./data/baltimore_orioles.xlsx"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bmore.data.raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 123
+Columns: 31
+$ Rk           &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
+$ Season       &lt;dbl&gt; 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 201…
+$ Team         &lt;chr&gt; "BAL", "BAL", "BAL", "BAL", "BAL", "BAL", "BAL", "BAL", "…
+$ Lg           &lt;chr&gt; "AL", "AL", "AL", "AL", "AL", "AL", "AL", "AL", "AL", "AL…
+$ W            &lt;dbl&gt; 101, 83, 52, 25, 54, 47, 75, 89, 81, 96, 85, 93, 69, 66, …
+$ GP           &lt;dbl&gt; 162, 162, 162, 60, 162, 162, 162, 162, 162, 162, 162, 162…
+$ L            &lt;dbl&gt; 61, 79, 110, 35, 108, 115, 87, 73, 81, 66, 77, 69, 93, 96…
+$ `Bat#`       &lt;dbl&gt; 31, 32, 44, 21, 45, 45, 41, 40, 43, 39, 41, 39, 37, 36, 3…
+$ PA           &lt;dbl&gt; 6123, 6049, 5983, 2242, 6189, 6034, 6140, 6089, 6007, 613…
+$ AB           &lt;dbl&gt; 5495, 5429, 5420, 2026, 5596, 5507, 5650, 5524, 5485, 559…
+$ R            &lt;dbl&gt; 807, 674, 659, 274, 729, 622, 743, 744, 713, 705, 745, 71…
+$ H            &lt;dbl&gt; 1399, 1281, 1296, 523, 1379, 1317, 1469, 1413, 1370, 1434…
+$ single       &lt;dbl&gt; 879, 810, 820, 337, 889, 872, 956, 889, 887, 943, 936, 87…
+$ double       &lt;dbl&gt; 309, 275, 266, 102, 252, 242, 269, 265, 246, 264, 298, 27…
+$ triple       &lt;dbl&gt; 28, 25, 15, 7, 25, 15, 12, 6, 20, 16, 14, 16, 13, 21, 19,…
+$ HR           &lt;dbl&gt; 183, 171, 195, 77, 213, 188, 232, 253, 217, 211, 212, 214…
+$ RBI          &lt;dbl&gt; 780, 639, 632, 264, 698, 593, 713, 710, 686, 681, 719, 67…
+$ SB           &lt;dbl&gt; 114, 95, 54, 19, 84, 81, 32, 19, 44, 44, 79, 58, 81, 76, …
+$ CS           &lt;dbl&gt; 24, 31, 23, 14, 30, 22, 13, 13, 25, 20, 29, 29, 25, 34, 3…
+$ BB           &lt;dbl&gt; 512, 476, 451, 164, 462, 422, 392, 468, 418, 401, 416, 48…
+$ SO           &lt;dbl&gt; 1370, 1390, 1454, 514, 1435, 1412, 1412, 1324, 1331, 1285…
+$ OBP          &lt;dbl&gt; 0.321, 0.305, 0.304, 0.321, 0.310, 0.298, 0.312, 0.317, 0…
+$ GIDP         &lt;dbl&gt; 114, 95, 105, 32, 111, 132, 138, 119, 127, 112, 105, 152,…
+$ HBP          &lt;dbl&gt; 45, 83, 65, 27, 71, 57, 50, 44, 51, 62, 36, 50, 52, 54, 3…
+$ SH           &lt;dbl&gt; 21, 12, 14, 15, 22, 13, 10, 17, 20, 35, 27, 38, 24, 31, 1…
+$ SF           &lt;dbl&gt; 47, 43, 31, 10, 37, 35, 37, 36, 32, 36, 45, 30, 43, 45, 4…
+$ IBB          &lt;dbl&gt; 14, 10, 12, 5, 8, 19, 12, 19, 23, 29, 36, 24, 24, 32, 25,…
+$ LOB          &lt;dbl&gt; 1041, 1095, 1046, 410, 1063, 1027, 1041, 1065, 990, 1088,…
+$ Div_Champ    &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ Wild_Card    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, …
+$ World_Series &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</code></pre>
+</div>
+</div>
+</section>
+<section id="data-wrangling" class="level3">
+<h3 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h3>
+<p>The raw data does not include classical baseball statistics such as batting average, win percentage, and slugging. It also only includes the raw counts (not relative frequency measures) for singles, double, triples, and home runs. Luckily, I am able to compute these metrics quite easily in R. I will briefly summarize each metric I plan to compute.</p>
+<ul>
+<li><p><code>Win_percent</code> <span class="math inline">\(= 100 \times (\frac{W}{GP})\)</span>: The percent of games played that resulted in a win.</p></li>
+<li><p><code>single.freq</code> <span class="math inline">\(= 1000 \times (\frac{S}{PA})\)</span>: The number of singles per 1000 plate appearance</p></li>
+<li><p><code>double.freq</code> <span class="math inline">\(= 1000 \times (\frac{D}{PA})\)</span>: The number of doubles per 1000 plate appearance</p></li>
+<li><p><code>triple.freq</code> <span class="math inline">\(= 1000 \times (\frac{Tr}{PA})\)</span>: The number of triples per 1000 plate appearance</p></li>
+<li><p><code>HR.freq</code> <span class="math inline">\(= 1000 \times (\frac{HR}{PA})\)</span>: The number of homeruns per 1000 plate appearance</p></li>
+<li><p><code>SO.freq</code> <span class="math inline">\(= 1000 \times (\frac{SO}{PA})\)</span>: The number of strike outs per 1000 plate appearances</p></li>
+<li><p><code>BB.freq</code> <span class="math inline">\(= 1000 \times (\frac{BB}{PA})\)</span>: The number of base-on-balls (walks) per 1000 plate appearances</p></li>
+<li><p><code>IBB.freq</code> <span class="math inline">\(= 1000 \times (\frac{IBB}{PA})\)</span>: The number of intentional base-on-balls (intentional walks) per 1000 plate appearances</p></li>
+<li><p><code>HBP.freq</code> <span class="math inline">\(= 1000 \times (\frac{HBP}{PA})\)</span>: The number of hit-by-pitch occurrences per 1000 plate appearances</p></li>
+<li><p><code>BA</code> <span class="math inline">\(= \frac{nH}{AB}\)</span>: The proportion of at bats that resulted in a hit</p></li>
+<li><p><code>SLG</code> <span class="math inline">\(= \frac{nS + 2\cdot nD + 3\cdot nT + 4\cdot nHR}{AB}\)</span>: The average number of bases obtained through a hit for each at bat.</p></li>
+<li><p><code>OPS</code> <span class="math inline">\(= OBP + SLG\)</span>: On base percentage plus slugging.</p></li>
+<li><p><code>anyAward</code> <span class="math inline">\(= n\text{WorldSeries} + n\text{DivChamps} + n\text{WildCard}\)</span>: <code>TRUE</code> if the team won a world series, division championship, or clinched the wild card.</p></li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>bmore.data.mod <span class="ot">&lt;-</span> bmore.data.raw <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Win_percent =</span> <span class="dv">100</span> <span class="sc">*</span> (W <span class="sc">/</span> GP),                                 <span class="co"># win percentage</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">single.freq =</span> <span class="dv">1000</span> <span class="sc">*</span> (single <span class="sc">/</span> PA),                           <span class="co"># singles per 1000 at bats</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">double.freq =</span> <span class="dv">1000</span> <span class="sc">*</span> (double <span class="sc">/</span> PA),                           <span class="co"># doubles per 1000 at bats</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">triple.freq =</span> <span class="dv">1000</span> <span class="sc">*</span> (triple <span class="sc">/</span> PA),                           <span class="co"># triples per 1000 at bats</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">HR.freq =</span> <span class="dv">1000</span> <span class="sc">*</span> (HR <span class="sc">/</span> PA),                                   <span class="co"># home runs per 1000 at bats</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">SO.freq =</span> <span class="dv">1000</span> <span class="sc">*</span> (SO <span class="sc">/</span> PA),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">BB.freq =</span> <span class="dv">1000</span> <span class="sc">*</span> (BB <span class="sc">/</span> PA),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">IBB.freq =</span> <span class="dv">1000</span> <span class="sc">*</span> (IBB <span class="sc">/</span> PA),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">HBP.freq =</span> <span class="dv">1000</span> <span class="sc">*</span> (HBP <span class="sc">/</span> PA),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA =</span> H <span class="sc">/</span> AB,                                                  <span class="co"># batting average</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">SLG =</span> (single <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>double <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>triple <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>HR) <span class="sc">/</span> AB,             <span class="co"># slugging</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">OPS =</span> OBP <span class="sc">+</span> SLG,                                              <span class="co"># on-base-percentage plus slugging</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">anyAward =</span> <span class="fu">as.logical</span>(World_Series <span class="sc">+</span> Div_Champ <span class="sc">+</span> Wild_Card))  <span class="co"># did the season culminate in world series, division champ, or wild card?</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>bmore.data.mod <span class="ot">&lt;-</span> bmore.data.mod[<span class="sc">-</span><span class="dv">123</span>,]                           <span class="co"># remove data from 1901 (Team == MLA)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I decided to use plate appearance (PA) to calculate the different hit and non-hit frequencies over the years. Normally, at-bats (AB) are used in the denominator when calculating frequency of different hit types. However, because BB, IBB, and HBP are not possible outcomes for an AB, and I wanted to have consistent measures for hit and non-hit frequencies, I decided to use PA instead of AB in the denominators.</p>
+<p>The only exception to this is when I computed batting average (BA) and slugging (SLG). These are classical baseball statistics commonly referenced by baseball experts and fans alike. Therefore, I did not want to deviate from these standard formulas by using PA instead of AB.</p>
+</div>
+</div>
+</section>
+<section id="win-percentage-over-time" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="win-percentage-over-time">Win Percentage Over Time</h3>
+<p>Were the Orioles ever “good”? The answer to this depends on how you define “good”. Suppose that “good” just means a winning record (i.e., <code>Win_percent &gt; 50</code>). If this is the case, then the Orioles were a “good” team for 46 of the 122 seasons examined here. That is, in <span class="math inline">\(38\%\)</span> of their seasons, the Orioles had a winning record (or they had a losing record for <span class="math inline">\(62\%\)</span> of seasons). While this certainly isn’t that impressive over the long run, the Orioles were actually very good during mid-60’s to mid 80’s (see <span class="citation" data-cites="ONair_2023">(<a href="#ref-ONair_2023" role="doc-biblioref">O’Nair 2023</a>)</span> for a list of the best Orioles teams ever). In fact, they had a winning record for 20 of their 21 seasons (<span class="math inline">\(95\%\)</span>) between 1965 and 1985 and won 3 world series and 7 division championships. This was the golden age for the Baltimore Orioles, and was in no small part due to their excellent roster of future hall-of-famers. The Orioles have been less consistent in the 2000’s; aside from a few winning seasons, such as the recent 2023 season which culminated in <span class="math inline">\(&gt;\)</span> 100 wins (one of only 6 occurrences in franchise history; <strong>see table 1</strong>) and a division title, they have only obtained winning record for 6 out of the 24 seasons (<span class="math inline">\(25\%\)</span>) between 2000 and 2023.</p>
+<div class="cell page-columns page-full">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wins100 <span class="ot">&lt;-</span> bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(W <span class="sc">&gt;=</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Season, Team, W, L, Div_Champ, World_Series)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(wins100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Season</th>
+<th style="text-align: left;">Team</th>
+<th style="text-align: right;">W</th>
+<th style="text-align: right;">L</th>
+<th style="text-align: right;">Div_Champ</th>
+<th style="text-align: right;">World_Series</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1980</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1979</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1971</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1970</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1969</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Table 1. Seasons with at least 100 wins.</p>
+</div></div></div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bmore.data.noAwards <span class="ot">&lt;-</span> <span class="fu">filter</span>(bmore.data.mod, anyAward <span class="sc">==</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>bmore.data.World_Series <span class="ot">&lt;-</span> <span class="fu">filter</span>(bmore.data.mod, World_Series <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>bmore.data.Div_Champ <span class="ot">&lt;-</span> <span class="fu">filter</span>(bmore.data.mod, Div_Champ <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>bmore.data.Wild_Card <span class="ot">&lt;-</span> <span class="fu">filter</span>(bmore.data.mod, Wild_Card <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>bmore.data.noAwards <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Season, <span class="at">y =</span> Win_percent, <span class="at">color =</span> Team)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> bmore.data.Wild_Card, <span class="fu">aes</span>(<span class="at">x =</span> Season, <span class="at">y =</span> Win_percent, <span class="at">color =</span> <span class="st">"Wild Card"</span>), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">shape =</span> <span class="st">"diamond"</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> bmore.data.Div_Champ, <span class="fu">aes</span>(<span class="at">x =</span> Season, <span class="at">y =</span> Win_percent, <span class="at">color =</span> <span class="st">"Division Champs"</span>), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">shape =</span> <span class="st">"diamond"</span>) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> bmore.data.World_Series, <span class="fu">aes</span>(<span class="at">x =</span> Season, <span class="at">y =</span> Win_percent, <span class="at">color =</span> <span class="st">"World Series Champs"</span>), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">9</span>, <span class="at">stroke =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1954</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1923</span>, <span class="at">y =</span> <span class="dv">65</span>, <span class="at">label =</span> <span class="st">"St. Louis Browns"</span>) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1990</span>, <span class="at">y =</span> <span class="dv">30</span>, <span class="at">label =</span> <span class="st">"Baltimore Orioles"</span>) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>), <span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"orange"</span>, <span class="st">"red"</span>), <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">'World Series Champs'</span>, <span class="st">'Division Champs'</span>, <span class="st">'Wild Card'</span>)) <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Baltimore Orioles &amp; St. Louis Browns: Winning Percentage by Season"</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"All World Series titles, division titles, and wild card wins occurred when the team was in Baltimore."</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Created by Josh Stim using `ggplot2`."</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Win Percentage (%)"</span>) <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="example_analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="hit-frequency-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="hit-frequency-over-time">Hit Frequency Over Time</h3>
+<p>As we can see below, different types of hits were more popular (or more feasible) during specific time periods of the team’s history. It is clear that the single has always been the most common type of hit, although there has been a somewhat consistent decrease over time. The frequency of double has fluctuated quite a bit over time. In my opinion, the most interesting pattern here is the decline of the triple and rise of the home run. From 1900 - 1920, the triple was at its peak frequency of around 11 per 1000 plate appearance. Since then, however, it has been on the consistent decline to where it sits today at around 3 per 1000 plate appearance. One sensible explanation for this decline is that players are now hitting home runs instead of triples. Indeed, home runs have become much, much more prevalent compared to the early days, rising from around 3 per 1000 at bats from 1900 - 1920 to around 34 per 1000 at bats in the present day. This striking increase in frequency is a known phenomenon and is seen throughout the entire league <span class="citation" data-cites="Baseball_Almanac">(<a href="#ref-Baseball_Almanac" role="doc-biblioref">Baseball Almanac, n.d.</a>)</span>. Experts believe this can be partly explained by faster pitching <span class="citation" data-cites="Sheinin_2019">(<a href="#ref-Sheinin_2019" role="doc-biblioref">Sheinin 2019</a>)</span> (which means greater exit velocity when the ball is hit).</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Season, Team, single.freq, double.freq, triple.freq, HR.freq) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(single.freq, double.freq, triple.freq, HR.freq),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"hit_type"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"freq"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Season, <span class="at">y=</span>freq, <span class="at">color =</span> Team)) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1954</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>hit_type, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Hit Frequency by Season"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Home runs are exploding in frequency while triples are on the decline."</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Created by Josh Stim using `ggplot2`."</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Relative Frequency (hits per 1000 PA)"</span>) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="example_analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="overall-batting-performance-over-time" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="overall-batting-performance-over-time">Overall Batting Performance Over Time</h3>
+<p>Do more home runs mean greater team batting averages? Surprisingly, no. While batters today are certainly hitting the ball further than they were in the early days, they are also striking out more. Perhaps this is due to a greater swing tendency in batters and better pitching from pitchers; I will return to this later. Does consistent batting averages mean that batters have not gotten better at batting? Absolutely not. As we can see, slugging has actually risen quite a bit since early days (see <strong>tables 2 &amp; 3</strong> for top five best and worst seasons for SLG). This makes sense because slugging, unlike batting average, places a greater weight on hits that result in more bases, and so the increase in slugging is due, in part, to the exploding home run rate. Similar to slugging, OPS has increased through the years. Again, this makes sense because OPS includes slugging in its calculation. The other part of OPS is on bases percentage (OBP), which reflects how often players make hits, gets walked, hit by a pitch, etc. The trajectory in the frequency of the latter two outcomes over the years are covered in the next section.</p>
+<p>The last thing I want to point out here is the batting performance of the St.Louis Browns in the 1920’s. As we can see, this was an extremely productive time for the Brown’s batting-wise, with the highest BA, OBP, and OPS in franchise history occurring in the 1922 season. This batting productivity was certainly due not to home runs, but rather to a higher frequency of singles (195 per 1000 PA) and triples (15 per 1000 PA) and a similar frequency of doubles (48 per 1000 PA) compared to today’s standards (144, 5, and 51, in the 2023 season, respectively).</p>
+<div class="cell page-columns page-full">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(SLG)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Season, Team, SLG) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(t2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Season</th>
+<th style="text-align: left;">Team</th>
+<th style="text-align: right;">SLG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1996</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">0.4719634</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1922</td>
+<td style="text-align: left;">SLB</td>
+<td style="text-align: right;">0.4530876</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1999</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">0.4474011</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1998</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">0.4469003</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">BAL</td>
+<td style="text-align: right;">0.4433382</td>
+</tr>
+</tbody>
+</table>
+<p>Table 2. Five seasons with highest SLG.</p>
+</div></div></div>
+<div class="cell page-columns page-full">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>t3 <span class="ot">&lt;-</span> bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(SLG) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Season, Team, SLG) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(t3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Season</th>
+<th style="text-align: left;">Team</th>
+<th style="text-align: right;">SLG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1910</td>
+<td style="text-align: left;">SLB</td>
+<td style="text-align: right;">0.2741777</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1909</td>
+<td style="text-align: left;">SLB</td>
+<td style="text-align: right;">0.2794118</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1905</td>
+<td style="text-align: left;">SLB</td>
+<td style="text-align: right;">0.2890085</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1904</td>
+<td style="text-align: left;">SLB</td>
+<td style="text-align: right;">0.2938953</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1916</td>
+<td style="text-align: left;">SLB</td>
+<td style="text-align: right;">0.3074685</td>
+</tr>
+</tbody>
+</table>
+<p>Table 3. Five seasons with lowest SLG.</p>
+</div></div></div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p.BA <span class="ot">&lt;-</span> bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Season, <span class="at">y =</span> BA, <span class="at">color =</span> Team)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1954</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'loess'</span>, <span class="at">formula =</span> <span class="st">'y~x'</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>p.OBP <span class="ot">&lt;-</span> bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Season, <span class="at">y =</span> OBP, <span class="at">color =</span> Team)) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1954</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'loess'</span>, <span class="at">formula =</span> <span class="st">'y~x'</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>p.SLG <span class="ot">&lt;-</span> bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Season, <span class="at">y =</span> SLG, <span class="at">color =</span> Team)) <span class="sc">+</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1954</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'loess'</span>, <span class="at">formula =</span> <span class="st">'y~x'</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>p.OPS <span class="ot">&lt;-</span> bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Season, <span class="at">y =</span> OPS, <span class="at">color =</span> Team)) <span class="sc">+</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1954</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'loess'</span>, <span class="at">formula =</span> <span class="st">'y~x'</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>p.BA <span class="sc">+</span> p.OBP <span class="sc">+</span> p.SLG <span class="sc">+</span> p.OPS <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">"Overall Batting Performance by Season"</span>,</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>                  <span class="at">subtitle =</span> <span class="st">"Observed increases in SLG and OPS over time, but not BA or OBP."</span>,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>                  <span class="at">caption =</span> <span class="st">"Created by Josh Stim using `ggplot2`."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="example_analysis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="non-hit-batting-outcomes-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="non-hit-batting-outcomes-over-time">Non-hit Batting Outcomes Over Time</h3>
+<p>So far, we’ve looked mostly at hits, or measures associated with hits. But what about other outcomes that may occur at the plate? Here, we look at how the number of strikeouts (SO), walks (BB), intentional walks (IBB), and hit by pitch occurrences (HBP) has fluctuated over time. Perhaps most striking is the dramatic increase in SO’s over the years, which is likely due to stronger pitching in the present day. It’s also possible that there are more SO’s because batters are swinging at more pitches. While I do not analyze swing rate here, it might be something worth looking into for a future analysis.</p>
+<p>Another notable observation is the pattern of intentional walks over time, which unsurprisingly reached a striking peak during the teams “best years” from mid 60’s to the mid-80’s. I say this is unsurprising because usually teams with really good batters rack up more intentional walks, at least in the present day. It is peculiar, however, that IBB was on the steady rise from 1924 until around 1974, and then was on the steady decline until the present day. This makes me think that IBB cannot be explained solely by team hitting performance, but could be influenced by league-wide gameplay tendencies. I would be curious to see if other teams follow a similar historical pattern as observed here.</p>
+<p>Finally, the pattern of HBP occurrences over time is quite interesting as well. Notably, HBP rate decreased sharply from about 8 per 1000 PA in the 1910’s to nearly 3 per 1000 PA in the mid-to-late 1940’s and then steadily rose again to around 10 per 1000 PA in the present day. The explanation for this pattern escapes me, but I would be very interested to hear hypothesis and suggestions for follow up analyses.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bmore.data.mod <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Season, Team, SO.freq, BB.freq, IBB.freq, HBP.freq) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(SO.freq, BB.freq, IBB.freq, HBP.freq),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"outcome"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"freq"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Season, <span class="at">y=</span>freq, <span class="at">color =</span> Team)) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1954</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>outcome, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Occurrences of Non-hit Batting Outcomes by Season"</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"SO's and HBP are gaining in prevalence over time. IBB's peaked during team's 'Golden Age'."</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Created by Josh Stim using `ggplot2`."</span>,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Relative Frequency (Outcomes per 1000 PA)"</span>) <span class="sc">+</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="example_analysis_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="data-dictionary" class="level3">
+<h3 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h3>
+<ul>
+<li><p><code>Rk</code>: Used for ordering the season. <code>Rk = 1</code> is the most recent season.</p></li>
+<li><p><code>Season</code>: The season year</p></li>
+<li><p><code>Team</code>: The baseball team. <code>BAL</code> for Baltimore, <code>SLB</code> for St.&nbsp;Louis, <code>MLA</code> for Milwaukee</p></li>
+<li><p><code>Lg</code>: The leauge the team played during a given season. <code>AL</code> means American League.</p></li>
+<li><p><code>W</code>, <code>L</code>, <code>GP</code>: Number of wins, losses, and games played for a given season, respectively.</p></li>
+<li><p><code>Bat#</code>: Number of batters the team had in rotation during a given season.</p></li>
+<li><p><code>PA</code>: Number of plate appearances in a season.</p></li>
+<li><p><code>AB</code>: Number of at-bats in a season.</p></li>
+<li><p><code>R</code>: Number of runs scored in a season.</p></li>
+<li><p><code>H</code>: Number of hits in a season.</p></li>
+<li><p><code>single</code>, <code>double</code>, <code>triple</code>, <code>HR</code>: Number of singles, double, triples, and homeruns in a season, respectively.</p></li>
+<li><p><code>RBI</code>: Number of “runs batted in” during a given season.</p></li>
+<li><p><code>SB</code>: Number of stolen bases in a season.</p></li>
+<li><p><code>CS</code>: Number of times a player was caught stealing during a season.</p></li>
+<li><p><code>BB</code>: Number of batter “base-on-balls” (i.e., walks) in a season.</p></li>
+<li><p><code>SO</code>: Number of batter strike outs in a season.</p></li>
+<li><p><code>OBP</code>: On base percentage (i.e., percent of plate appearances where batter gets on base) in a season.</p></li>
+<li><p><code>GIDP</code>: Number of ground into double play occurrences in a season.</p></li>
+<li><p><code>HBP</code>: Number of hit by pitch occurrences in a season.</p></li>
+<li><p><code>SH</code>, <code>SF</code>: Number of sacrifice hits and sacrifice flys, respectively.</p></li>
+<li><p><code>IBB</code>: Number of intentional “base-on-balls” (i.e., intentional walks) in a season.</p></li>
+<li><p><code>LOB</code>: Number of runners left on base in a season.</p></li>
+<li><p><code>World_Series</code>, <code>Div_Champ</code>, <code>Wild_Card</code>: set to <code>1</code> if team won the World Series, Division title, or Wild card, respectively. Otherwise set to <code>0</code>.</p></li>
+</ul>
+</section>
+<section id="list-of-functions" class="level3">
+<h3 class="anchored" data-anchor-id="list-of-functions">List of Functions</h3>
+<p>For this analysis, I used the following packages and functions in R:</p>
+<ul>
+<li><p><code>readxl</code>: <code>read_excel()</code></p></li>
+<li><p><code>dplyr</code>: <code>glimpse()</code>, <code>mutate()</code>, <code>filter()</code>, <code>select()</code>, <code>pivot_longer()</code>, <code>arrange()</code>, <code>head()</code></p></li>
+<li><p><code>ggplot2</code>: <code>ggplot()</code>, <code>geom_point()</code>, <code>geom_smooth()</code>, <code>geom_hline()</code>, <code>geom_vline()</code>, <code>theme_minimal()</code>, <code>theme()</code>, <code>stat_smooth()</code>, <code>annotate()</code>, <code>scale_color_manual()</code></p></li>
+<li><p><code>knitr</code>: <code>kable()</code></p></li>
+</ul>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Wikipedia_2023" class="csl-entry" role="listitem">
+<span>“Baltimore Orioles.”</span> 2023. <em>Wikipedia</em>. Wikimedia Foundation. <a href="https://en.wikipedia.org/wiki/Baltimore_Orioles">https://en.wikipedia.org/wiki/Baltimore_Orioles</a>.
+</div>
+<div id="ref-Baseball_Almanac" class="csl-entry" role="listitem">
+Baseball Almanac, Inc. n.d. <span>“League by League Totals for Home Runs.”</span> <em>Baseball Almanac</em>. <a href="https://www.baseball-almanac.com/hitting/hihr6.shtml">https://www.baseball-almanac.com/hitting/hihr6.shtml</a>.
+</div>
+<div id="ref-ONair_2023" class="csl-entry" role="listitem">
+O’Nair, Michael. 2023. <span>“The Best Teams the Baltimore Orioles Ever Produced.”</span> <em>Eutaw Street Report</em>. <a href="https://eutawstreetreport.com/the-best-orioles-teams-ever/">https://eutawstreetreport.com/the-best-orioles-teams-ever/</a>.
+</div>
+<div id="ref-Sheinin_2019" class="csl-entry" role="listitem">
+Sheinin, Dave. 2019. <span>“Velocity Is Strangling Baseball - and Its Grip Keeps Tightening.”</span> <em>The Washington Post</em>. WP Company. <a href="https://www.washingtonpost.com/sports/2019/05/21/velocity-is-strangling-baseball-its-grip-keeps-tightening/">https://www.washingtonpost.com/sports/2019/05/21/velocity-is-strangling-baseball-its-grip-keeps-tightening/</a>.
+</div>
+<div id="ref-Stathead" class="csl-entry" role="listitem">
+<span>“Stathead Team Batting.”</span> n.d. <em>Stathead.com</em>. <a href="https://stathead.com/baseball/team-batting-season-finder.cgi?request=1&amp;amp;team_id=BAL">https://stathead.com/baseball/team-batting-season-finder.cgi?request=1&amp;amp;team_id=BAL</a>.
+</div>
+<div id="ref-Virtual_Backgrounds" class="csl-entry" role="listitem">
+<span>“Virtual Backgrounds.”</span> n.d. <em>Virtual Backgrounds</em>. <a href="https://virtualbackgrounds.site/background/oriole-park-at-camden-yards-ballpark/">https://virtualbackgrounds.site/background/oriole-park-at-camden-yards-ballpark/</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
