@@ -144,26 +144,29 @@ bmore.data.noAwards %>%
   stat_smooth(aes(group = 1), method = "loess", formula = y ~ x, se = FALSE, color = "black") +
   scale_color_manual(values = c("black", "orange", "red"), breaks=c('World Series Champs', 'Division Champs', 'Wild Card')) +
   labs(title = "Baltimore Orioles & St. Louis Browns: Winning Percentage by Season",
-       subtitle = "All World Series titles, division titles, and wild card wins occurred when the team was in Baltimore.",
+       subtitle = "All World Series, division titles, and wild card wins occurred when the team was in Baltimore.",
        caption = "Created by Josh Stim using `ggplot2`.",
        y = "Win Percentage (%)") +
+  scale_x_discrete(limits = c(seq(1900,2000,25), 2023)) +
   theme_minimal() +
   theme(legend.title = element_blank())
 ```
 
 ### Hit Frequency Over Time
 As we can see below, different types of hits were more popular (or more feasible) during specific time periods of the team's history. It is clear that the single has always been the most common type of hit, although there has been a somewhat consistent decrease over time. The frequency of double has fluctuated quite a bit over time. In my opinion, the most interesting pattern here is the decline of the triple and rise of the home run. From 1900 - 1920, the triple was at its peak frequency of around 11 per 1000 plate appearance. Since then, however, it has been on the consistent decline to where it sits today at around 3 per 1000 plate appearance. One sensible explanation for this decline is that players are now hitting home runs instead of triples. Indeed, home runs have become much, much more prevalent compared to the early days, rising from around 3 per 1000 at bats from 1900 - 1920 to around 34 per 1000 at bats in the present day. This striking increase in frequency is a known phenomenon and is seen throughout the entire league [@Baseball_Almanac]. Experts believe this is partly due to changes in pitching strategy [@Sheinin_2019], which can impact the exit velocity and launch angle when a ball is hit.
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 bmore.data.mod %>%
   select(Season, Team, single.freq, double.freq, triple.freq, HR.freq) %>%
   pivot_longer(cols = c(single.freq, double.freq, triple.freq, HR.freq),
                names_to = "hit_type",
                values_to = "freq") %>%
+  mutate(hit_type = factor(hit_type, levels = c("double.freq", "single.freq", "triple.freq", "HR.freq"))) %>%
   ggplot(aes(x=Season, y=freq, color = Team)) +
   geom_point() +
   geom_vline(xintercept = 1954, linetype = "longdash") +
   facet_wrap(~hit_type, scales = "free") +
   geom_smooth(color = "black") +
+  scale_x_discrete(limits = c(seq(1900,2000,25), 2023)) +
   labs(title = "Hit Frequency by Season",
        subtitle = "Home runs are exploding in frequency while triples are on the decline.",
        caption = "Created by Josh Stim using `ggplot2`.",
@@ -195,12 +198,13 @@ t3 <- bmore.data.mod %>%
 knitr::kable(t3)
 ```
 
-```{r}
+```{r, warning = FALSE}
 p.BA <- bmore.data.mod %>%
   ggplot(aes(x = Season, y = BA, color = Team)) +
   geom_vline(xintercept = 1954, linetype = "longdash") +
   geom_point() +
   geom_smooth(method = 'loess', formula = 'y~x', color = "black") +
+  scale_x_discrete(limits = c(seq(1900,2000,25), 2023)) +
   theme_minimal() +
   theme(legend.position = "none")
 
@@ -209,6 +213,7 @@ p.OBP <- bmore.data.mod %>%
   ggplot(aes(x = Season, y = OBP, color = Team)) +
   geom_vline(xintercept = 1954, linetype = "longdash") +
   geom_point() +
+  scale_x_discrete(limits = c(seq(1900,2000,25), 2023)) +
   geom_smooth(method = 'loess', formula = 'y~x', color = "black") +
   theme_minimal()
 
@@ -217,6 +222,7 @@ p.SLG <- bmore.data.mod %>%
   geom_vline(xintercept = 1954, linetype = "longdash") +
   geom_point() +
   geom_smooth(method = 'loess', formula = 'y~x', color = "black") +
+  scale_x_discrete(limits = c(seq(1900,2000,25), 2023)) +
   theme_minimal() +
   theme(legend.position = "none")
 
@@ -224,6 +230,7 @@ p.OPS <- bmore.data.mod %>%
   ggplot(aes(x = Season, y = OPS, color = Team)) +
   geom_vline(xintercept = 1954, linetype = "longdash") +
   geom_point() +
+  scale_x_discrete(limits = c(seq(1900,2000,25), 2023)) +
   geom_smooth(method = 'loess', formula = 'y~x', color = "black") +
   theme_minimal()
 
@@ -250,6 +257,7 @@ bmore.data.mod %>%
   geom_vline(xintercept = 1954, linetype = "longdash") +
   facet_wrap(~outcome, scales = "free") +
   geom_smooth(color = "black") +
+  scale_x_discrete(limits = c(seq(1900,2000,25), 2023)) +
   labs(title = "Occurrences of Non-hit Batting Outcomes by Season",
        subtitle = "SO's and HBP are gaining in prevalence over time. IBB's peaked during team's 'Golden Age'.",
        caption = "Created by Josh Stim using `ggplot2`.",
@@ -314,7 +322,7 @@ For this analysis, I used the following packages and functions in R:
   
   - `dplyr`: `glimpse()`, `mutate()`, `filter()`, `select()`, `pivot_longer()`, `arrange()`, `head()`
   
-  - `ggplot2`: `ggplot()`, `geom_point()`, `geom_smooth()`, `geom_hline()`, `geom_vline()`, `theme_minimal()`, `theme()`, `stat_smooth()`, `annotate()`, `scale_color_manual()`
+  - `ggplot2`: `ggplot()`, `geom_point()`, `geom_smooth()`, `geom_hline()`, `geom_vline()`, `theme_minimal()`, `theme()`, `stat_smooth()`, `annotate()`, `scale_color_manual()`, `scale_x_discrete()`
   
   - `patchwork`: `plot_layout()`, `plot_annotation()`
   
