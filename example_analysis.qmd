@@ -9,19 +9,19 @@ bibliography: my-refs.bib
 ## The Baltimore Orioles: A historical perspective
 
 ![Camden Yards: Home of the Baltimore Orioles](camden-yards-ballpark.jpeg)
-This image of Camden Yards (home of the Baltimore Orioles) was obtained from [@Virtual_Backgrounds].
+Camden Yards (home of the Baltimore Orioles). Image obtained from [Virtual Backgrounds](https://virtualbackgrounds.site/background/oriole-park-at-camden-yards-ballpark/).
 
 ### Introduction
-Based in Camden Yards in Baltimore, MD, the Orioles are beloved by many Baltimoreans. However, they were not always located in Baltimore! In fact, the franchise began in Milwaukee, Wisconsin in 1901, where they were called the "Milwaukee Brewers" (not to be confused with the Milwaukee Brewers that exist today). In 1902, the franchise moved to St. Louis, where they stayed for 53 years until the end of 1953. At the time, they were one of two teams in St. Louis; the other team was the Cardinals (yes, \textit{the} St. Louis Cardinals). Finally, in 1954, the team moved to Baltimore where they came to be known as the Baltimore Orioles.
+Based in Camden Yards in Baltimore, MD, the Orioles are beloved to many Baltimoreans. However, they were not always located in Baltimore! In fact, the franchise began in Milwaukee, Wisconsin in 1901, where they were called the "Milwaukee Brewers" (not to be confused with the Milwaukee Brewers that exist today). In 1902, the franchise moved to St. Louis, where they stayed for 53 years until the end of 1953. At the time, they were one of two teams in St. Louis; the other team was the Cardinals (yes, \textit{the} St. Louis Cardinals). Finally, in 1954, the team moved to Baltimore where they came to be known as the Baltimore Orioles.
 
-As is common in most sports, baseball team performance varies over time. The nature of this variation depends on factors such as the quality of the athletes, changes to the rule book, and team strategies, among other things. Here, we examine how overall team performance (measured by win percentage) and batting performance of the Baltimore Orioles has changed since 1902.
+As is the case in all sports, team performance varies over time. In baseball, the nature of this variation depends on factors such as the quality of the athletes, changes to the rule book, and team strategies. Here, we examine how overall team performance (measured by win percentage) and batting performance of the Baltimore Orioles has changed since 1902.
 
 ::: {.callout-note}
-Because the frachise was in Milwaukee for only 1 year (1901), I decided to exclude this season from my analysis. In the following analysis, we look at 53 seasons of the St. Louis Browns (1902 - 1953), and 70 seasons of the Baltimore Orioles (1954 - 2023).
+Because the franchise was in Milwaukee for only 1 year (1901), I decided to exclude this season from my analysis. In the following analysis, we look at 53 seasons of the St. Louis Browns (1902 - 1953), and 70 seasons of the Baltimore Orioles (1954 - 2023).
 :::
 
 ### Objectives
-In particular, I seek to answer the following question about the Orioles:
+In the following analysis, I seek to answer the following question about the Orioles:
 
 From 1902 to 2023,
 
@@ -37,9 +37,9 @@ From 1902 to 2023,
 This analysis is intended for anyone who is interested in baseball history. Even if you are not an Orioles fan, this analysis may still be of interest, since a number of the trends observed here likely reflect league-wide rule changes and gameplay tendencies.
 
 ### Data Source
-The data for this analysis were obtained from [@Stathead], which provides endless sports data on team and player performances at the game and season levels. As part of my analysis, I wanted to isolate seasons that corresponded to winning the world-series, the division, or the wildcard. I was able to determine which seasons these were by referencing [@Wikipedia_2023].
+The data for this analysis were obtained from Stathead [@Stathead] , which provides endless sports data on team and player performances at the game and season levels. As part of my analysis, I wanted to isolate seasons that corresponded to winning the world-series, the division, or the wildcard. I was able to determine which seasons these were by referencing the Baltimore Orioles Wikipedia page [@Wikipedia_2023].
 
-I decided to create my own data dictionary. You can find that at the end of this article.
+I created a data dictionary that you can find that at the end of this article.
 
 ### Getting Started
 For this analysis, I will use functions from the `tidyverse`, `readxl`, `patchwork`, and `knitr` libraries in R. 
@@ -59,7 +59,7 @@ glimpse(bmore.data.raw)
 ```
 
 ### Data Wrangling
-The raw data does not include classical baseball statistics such as batting average, win percentage, and slugging. It also only includes the raw counts (not relative frequency measures) for singles, double, triples, and home runs. Luckily, I am able to compute these metrics quite easily in R. I will briefly summarize each metric I plan to compute.
+The raw data does not include classical baseball statistics such as batting average, win percentage, and slugging. It also only includes the raw counts (not relative frequency measures) for singles, double, triples, and home runs. Luckily, I was able to compute these metrics quite easily in R. I will briefly summarize each metric I plan to compute. Feel free to consult the data dictionary for further reference.
 
   - `Win_percent` $= 100 \times (\frac{W}{GP})$: The percent of games played that resulted in a win.
   
@@ -79,7 +79,7 @@ The raw data does not include classical baseball statistics such as batting aver
   
   - `HBP.freq` $= 1000 \times (\frac{HBP}{PA})$: The number of hit-by-pitch occurrences per 1000 plate appearances
   
-  - `BA` $= \frac{nH}{AB}$: The proportion of at bats that resulted in a hit
+  - `BA` $= \frac{H}{AB}$: The proportion of at bats that resulted in a hit
   
   - `SLG` $= \frac{nS + 2\cdot nD + 3\cdot nT + 4\cdot nHR}{AB}$: The average number of bases obtained through a hit for each at bat.
   
@@ -114,7 +114,7 @@ The only exception to this is when I computed batting average (BA) and slugging 
 :::
 
 ### Win Percentage Over Time
-Were the Orioles ever "good"? The answer to this depends on how you define "good". Suppose that "good" just means a winning record (i.e., `Win_percent > 50`). If this is the case, then the Orioles were a "good" team for 46 of the 122 seasons examined here. That is, in $38\%$ of their seasons, the Orioles had a winning record (or they had a losing record for $62\%$ of seasons). While this certainly isn't that impressive over the long run, the Orioles were actually very good during mid-60's to mid 80's (see [@ONair_2023] for a list of the best Orioles teams ever). In fact, they had a winning record for 20 of their 21 seasons ($95\%$) between 1965 and 1985 and won 3 world series and 7 division championships. This was the golden age for the Baltimore Orioles, and was in no small part due to their excellent roster of future hall-of-famers. The Orioles have been less consistent in the 2000's; aside from a few winning seasons, such as the recent 2023 season which culminated in $>$ 100 wins (one of only 6 occurrences in franchise history; **see table 1**) and a division title, they have only obtained winning record for 6 out of the 24 seasons ($25\%$) between 2000 and 2023.
+Were the Orioles ever "good"? The answer to this depends on how you define "good". Suppose that "good" just means a winning record (i.e., `Win_percent > 50`). If this is the case, then the Orioles were a "good" team for 46 of the 122 seasons examined here. That is, in $38\%$ of their seasons, the Orioles had a winning record (or they had a losing record for $62\%$ of seasons). While this certainly isn't that impressive over the long run, the Orioles were actually very good during mid-60's to mid 80's (see @ONair_2023 for a list of the best Orioles teams ever). In fact, they had a winning record for 20 of their 21 seasons ($95\%$) between 1965 and 1985 and won 3 world series and 7 division championships. This was the golden age for the Baltimore Orioles, and was in no small part due to their excellent roster of future hall-of-famers. The Orioles have been less consistent in the 2000's, obtaining a winning record for only 6 out of the 24 seasons ($25\%$) between 2000 and 2023. Notably, however, their recent 2023 season culminated in a division title and $>$ 100 wins, the latter of which has occurred only 6 times in franchise history (see **margin table 1**)!
 ```{r}
 #| fig-cap: "Table 1. Seasons with at least 100 wins."
 #| column: margin
@@ -152,7 +152,7 @@ bmore.data.noAwards %>%
 ```
 
 ### Hit Frequency Over Time
-As we can see below, different types of hits were more popular (or more feasible) during specific time periods of the team's history. It is clear that the single has always been the most common type of hit, although there has been a somewhat consistent decrease over time. The frequency of double has fluctuated quite a bit over time. In my opinion, the most interesting pattern here is the decline of the triple and rise of the home run. From 1900 - 1920, the triple was at its peak frequency of around 11 per 1000 plate appearance. Since then, however, it has been on the consistent decline to where it sits today at around 3 per 1000 plate appearance. One sensible explanation for this decline is that players are now hitting home runs instead of triples. Indeed, home runs have become much, much more prevalent compared to the early days, rising from around 3 per 1000 at bats from 1900 - 1920 to around 34 per 1000 at bats in the present day. This striking increase in frequency is a known phenomenon and is seen throughout the entire league [@Baseball_Almanac]. Experts believe this can be partly explained by faster pitching [@Sheinin_2019] (which means greater exit velocity when the ball is hit).
+As we can see below, different types of hits were more popular (or more feasible) during specific time periods of the team's history. It is clear that the single has always been the most common type of hit, although there has been a somewhat consistent decrease over time. The frequency of double has fluctuated quite a bit over time. In my opinion, the most interesting pattern here is the decline of the triple and rise of the home run. From 1900 - 1920, the triple was at its peak frequency of around 11 per 1000 plate appearance. Since then, however, it has been on the consistent decline to where it sits today at around 3 per 1000 plate appearance. One sensible explanation for this decline is that players are now hitting home runs instead of triples. Indeed, home runs have become much, much more prevalent compared to the early days, rising from around 3 per 1000 at bats from 1900 - 1920 to around 34 per 1000 at bats in the present day. This striking increase in frequency is a known phenomenon and is seen throughout the entire league [@Baseball_Almanac]. Experts believe this is partly due to changes in pitching strategy [@Sheinin_2019], which can impact the exit velocity and launch angle when a ball is hit.
 ```{r, message=FALSE}
 bmore.data.mod %>%
   select(Season, Team, single.freq, double.freq, triple.freq, HR.freq) %>%
@@ -172,7 +172,7 @@ bmore.data.mod %>%
 ```
 
 ### Overall Batting Performance Over Time
-Do more home runs mean greater team batting averages? Surprisingly, no. While batters today are certainly hitting the ball further than they were in the early days, they are also striking out more. Perhaps this is due to a greater swing tendency in batters and better pitching from pitchers; I will return to this later. Does consistent batting averages mean that batters have not gotten better at batting? Absolutely not. As we can see, slugging has actually risen quite a bit since early days (see **tables 2 & 3** for top five best and worst seasons for SLG). This makes sense because slugging, unlike batting average, places a greater weight on hits that result in more bases, and so the increase in slugging is due, in part, to the exploding home run rate. Similar to slugging, OPS has increased through the years. Again, this makes sense because OPS includes slugging in its calculation. The other part of OPS is on bases percentage (OBP), which reflects how often players make hits, gets walked, hit by a pitch, etc. The trajectory in the frequency of the latter two outcomes over the years are covered in the next section.
+Do more home runs mean greater team batting averages? Surprisingly, no. While batters today are certainly hitting the ball further than they were in the early days, they are also striking out more. Perhaps this is due to a greater swing tendency in batters and better pitching from pitchers; I will return to this later. Does consistent batting averages mean that batters have not gotten better at batting? Absolutely not. As we can see, slugging has actually risen quite a bit since early days (see **margin tables 2 & 3** for top five best and worst seasons for SLG). This makes sense because slugging, unlike batting average, places a greater weight on hits that result in more bases, and so the increase in slugging is due, in part, to the exploding home run rate. Similar to slugging, OPS has increased through the years. Again, this makes sense because OPS includes slugging in its calculation. The other part of OPS is on bases percentage (OBP), which reflects how often players make hits, gets walked, hit by a pitch, etc. The trajectory in the frequency of the latter two outcomes over the years are covered in the next section.
 
 The last thing I want to point out here is the batting performance of the St.Louis Browns in the 1920's. As we can see, this was an extremely productive time for the Brown's batting-wise, with the highest BA, OBP, and OPS in franchise history occurring in the 1922 season. This batting productivity was certainly due not to home runs, but rather to a higher frequency of singles (195 per 1000 PA) and triples (15 per 1000 PA) and a similar frequency of doubles (48 per 1000 PA) compared to today's standards (144, 5, and 51, in the 2023 season, respectively).
 ```{r}
@@ -258,15 +258,15 @@ bmore.data.mod %>%
   
 ```
 
-### Data Dictionary
+## Data Dictionary
 
-  - `Rk`: Used for ordering the season. `Rk = 1` is the most recent season.
+  - `Rk`: Used for ordering the seasons. `Rk = 1` is the most recent season.
 
-  - `Season`: The season year
+  - `Season`: The year associated with a given season
   
   - `Team`: The baseball team. `BAL` for Baltimore, `SLB` for St. Louis, `MLA` for Milwaukee
   
-  - `Lg`: The leauge the team played during a given season. `AL` means American League.
+  - `Lg`: The league the team played in during a given season. `AL` means American League.
   
   - `W`, `L`, `GP`: Number of wins, losses, and games played for a given season, respectively.
   
@@ -306,7 +306,7 @@ bmore.data.mod %>%
   
   - `World_Series`, `Div_Champ`, `Wild_Card`: set to `1` if team won the World Series, Division title, or Wild card, respectively. Otherwise set to `0`.
   
-### List of Functions
+## List of Functions
 
 For this analysis, I used the following packages and functions in R:
 
@@ -315,5 +315,7 @@ For this analysis, I used the following packages and functions in R:
   - `dplyr`: `glimpse()`, `mutate()`, `filter()`, `select()`, `pivot_longer()`, `arrange()`, `head()`
   
   - `ggplot2`: `ggplot()`, `geom_point()`, `geom_smooth()`, `geom_hline()`, `geom_vline()`, `theme_minimal()`, `theme()`, `stat_smooth()`, `annotate()`, `scale_color_manual()`
+  
+  - `patchwork`: `plot_layout()`, `plot_annotation()`
   
   - `knitr`: `kable()`

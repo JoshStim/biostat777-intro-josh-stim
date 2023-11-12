@@ -176,9 +176,9 @@ div.csl-indent {
   <li><a href="#hit-frequency-over-time" id="toc-hit-frequency-over-time" class="nav-link" data-scroll-target="#hit-frequency-over-time">Hit Frequency Over Time</a></li>
   <li><a href="#overall-batting-performance-over-time" id="toc-overall-batting-performance-over-time" class="nav-link" data-scroll-target="#overall-batting-performance-over-time">Overall Batting Performance Over Time</a></li>
   <li><a href="#non-hit-batting-outcomes-over-time" id="toc-non-hit-batting-outcomes-over-time" class="nav-link" data-scroll-target="#non-hit-batting-outcomes-over-time">Non-hit Batting Outcomes Over Time</a></li>
+  </ul></li>
   <li><a href="#data-dictionary" id="toc-data-dictionary" class="nav-link" data-scroll-target="#data-dictionary">Data Dictionary</a></li>
   <li><a href="#list-of-functions" id="toc-list-of-functions" class="nav-link" data-scroll-target="#list-of-functions">List of Functions</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -204,11 +204,11 @@ div.csl-indent {
 
 <section id="the-baltimore-orioles-a-historical-perspective" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-baltimore-orioles-a-historical-perspective">The Baltimore Orioles: A historical perspective</h2>
-<p><img src="camden-yards-ballpark.jpeg" class="img-fluid" alt="Camden Yards: Home of the Baltimore Orioles"> This image of Camden Yards (home of the Baltimore Orioles) was obtained from <span class="citation" data-cites="Virtual_Backgrounds">(<a href="#ref-Virtual_Backgrounds" role="doc-biblioref"><span>“Virtual Backgrounds,”</span> n.d.</a>)</span>.</p>
+<p><img src="camden-yards-ballpark.jpeg" class="img-fluid" alt="Camden Yards: Home of the Baltimore Orioles"> Camden Yards (home of the Baltimore Orioles). Image obtained from <a href="https://virtualbackgrounds.site/background/oriole-park-at-camden-yards-ballpark/">Virtual Backgrounds</a>.</p>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>Based in Camden Yards in Baltimore, MD, the Orioles are beloved by many Baltimoreans. However, they were not always located in Baltimore! In fact, the franchise began in Milwaukee, Wisconsin in 1901, where they were called the “Milwaukee Brewers” (not to be confused with the Milwaukee Brewers that exist today). In 1902, the franchise moved to St.&nbsp;Louis, where they stayed for 53 years until the end of 1953. At the time, they were one of two teams in St.&nbsp;Louis; the other team was the Cardinals (yes, St.&nbsp;Louis Cardinals). Finally, in 1954, the team moved to Baltimore where they came to be known as the Baltimore Orioles.</p>
-<p>As is common in most sports, baseball team performance varies over time. The nature of this variation depends on factors such as the quality of the athletes, changes to the rule book, and team strategies, among other things. Here, we examine how overall team performance (measured by win percentage) and batting performance of the Baltimore Orioles has changed since 1902.</p>
+<p>Based in Camden Yards in Baltimore, MD, the Orioles are beloved to many Baltimoreans. However, they were not always located in Baltimore! In fact, the franchise began in Milwaukee, Wisconsin in 1901, where they were called the “Milwaukee Brewers” (not to be confused with the Milwaukee Brewers that exist today). In 1902, the franchise moved to St.&nbsp;Louis, where they stayed for 53 years until the end of 1953. At the time, they were one of two teams in St.&nbsp;Louis; the other team was the Cardinals (yes, St.&nbsp;Louis Cardinals). Finally, in 1954, the team moved to Baltimore where they came to be known as the Baltimore Orioles.</p>
+<p>As is the case in all sports, team performance varies over time. In baseball, the nature of this variation depends on factors such as the quality of the athletes, changes to the rule book, and team strategies. Here, we examine how overall team performance (measured by win percentage) and batting performance of the Baltimore Orioles has changed since 1902.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -219,13 +219,13 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Because the frachise was in Milwaukee for only 1 year (1901), I decided to exclude this season from my analysis. In the following analysis, we look at 53 seasons of the St.&nbsp;Louis Browns (1902 - 1953), and 70 seasons of the Baltimore Orioles (1954 - 2023).</p>
+<p>Because the franchise was in Milwaukee for only 1 year (1901), I decided to exclude this season from my analysis. In the following analysis, we look at 53 seasons of the St.&nbsp;Louis Browns (1902 - 1953), and 70 seasons of the Baltimore Orioles (1954 - 2023).</p>
 </div>
 </div>
 </section>
 <section id="objectives" class="level3">
 <h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
-<p>In particular, I seek to answer the following question about the Orioles:</p>
+<p>In the following analysis, I seek to answer the following question about the Orioles:</p>
 <p>From 1902 to 2023,</p>
 <ol type="1">
 <li><p>How does winning percentage change over time?</p></li>
@@ -240,8 +240,8 @@ Note
 </section>
 <section id="data-source" class="level3">
 <h3 class="anchored" data-anchor-id="data-source">Data Source</h3>
-<p>The data for this analysis were obtained from <span class="citation" data-cites="Stathead">(<a href="#ref-Stathead" role="doc-biblioref"><span>“Stathead Team Batting,”</span> n.d.</a>)</span>, which provides endless sports data on team and player performances at the game and season levels. As part of my analysis, I wanted to isolate seasons that corresponded to winning the world-series, the division, or the wildcard. I was able to determine which seasons these were by referencing <span class="citation" data-cites="Wikipedia_2023">(<a href="#ref-Wikipedia_2023" role="doc-biblioref"><span>“Baltimore Orioles”</span> 2023</a>)</span>.</p>
-<p>I decided to create my own data dictionary. You can find that at the end of this article.</p>
+<p>The data for this analysis were obtained from Stathead <span class="citation" data-cites="Stathead">(<a href="#ref-Stathead" role="doc-biblioref"><span>“Stathead Baseball,”</span> n.d.</a>)</span> , which provides endless sports data on team and player performances at the game and season levels. As part of my analysis, I wanted to isolate seasons that corresponded to winning the world-series, the division, or the wildcard. I was able to determine which seasons these were by referencing the Baltimore Orioles Wikipedia page <span class="citation" data-cites="Wikipedia_2023">(<a href="#ref-Wikipedia_2023" role="doc-biblioref"><span>“Baltimore Orioles”</span> 2023</a>)</span>.</p>
+<p>I created a data dictionary that you can find that at the end of this article.</p>
 </section>
 <section id="getting-started" class="level3">
 <h3 class="anchored" data-anchor-id="getting-started">Getting Started</h3>
@@ -255,7 +255,7 @@ Note
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"knitr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>The data were downloaded from <span class="citation" data-cites="Stathead">(<a href="#ref-Stathead" role="doc-biblioref"><span>“Stathead Team Batting,”</span> n.d.</a>)</span> and will be imported into R using the <code>read_excel</code> function. Below is a glimpse of the dataset.</p>
+<p>The data were downloaded from <span class="citation" data-cites="Stathead">(<a href="#ref-Stathead" role="doc-biblioref"><span>“Stathead Baseball,”</span> n.d.</a>)</span> and will be imported into R using the <code>read_excel</code> function. Below is a glimpse of the dataset.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -301,7 +301,7 @@ $ World_Series &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 </section>
 <section id="data-wrangling" class="level3">
 <h3 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h3>
-<p>The raw data does not include classical baseball statistics such as batting average, win percentage, and slugging. It also only includes the raw counts (not relative frequency measures) for singles, double, triples, and home runs. Luckily, I am able to compute these metrics quite easily in R. I will briefly summarize each metric I plan to compute.</p>
+<p>The raw data does not include classical baseball statistics such as batting average, win percentage, and slugging. It also only includes the raw counts (not relative frequency measures) for singles, double, triples, and home runs. Luckily, I was able to compute these metrics quite easily in R. I will briefly summarize each metric I plan to compute. Feel free to consult the data dictionary for further reference.</p>
 <ul>
 <li><p><code>Win_percent</code> <span class="math inline">\(= 100 \times (\frac{W}{GP})\)</span>: The percent of games played that resulted in a win.</p></li>
 <li><p><code>single.freq</code> <span class="math inline">\(= 1000 \times (\frac{S}{PA})\)</span>: The number of singles per 1000 plate appearance</p></li>
@@ -312,7 +312,7 @@ $ World_Series &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 <li><p><code>BB.freq</code> <span class="math inline">\(= 1000 \times (\frac{BB}{PA})\)</span>: The number of base-on-balls (walks) per 1000 plate appearances</p></li>
 <li><p><code>IBB.freq</code> <span class="math inline">\(= 1000 \times (\frac{IBB}{PA})\)</span>: The number of intentional base-on-balls (intentional walks) per 1000 plate appearances</p></li>
 <li><p><code>HBP.freq</code> <span class="math inline">\(= 1000 \times (\frac{HBP}{PA})\)</span>: The number of hit-by-pitch occurrences per 1000 plate appearances</p></li>
-<li><p><code>BA</code> <span class="math inline">\(= \frac{nH}{AB}\)</span>: The proportion of at bats that resulted in a hit</p></li>
+<li><p><code>BA</code> <span class="math inline">\(= \frac{H}{AB}\)</span>: The proportion of at bats that resulted in a hit</p></li>
 <li><p><code>SLG</code> <span class="math inline">\(= \frac{nS + 2\cdot nD + 3\cdot nT + 4\cdot nHR}{AB}\)</span>: The average number of bases obtained through a hit for each at bat.</p></li>
 <li><p><code>OPS</code> <span class="math inline">\(= OBP + SLG\)</span>: On base percentage plus slugging.</p></li>
 <li><p><code>anyAward</code> <span class="math inline">\(= n\text{WorldSeries} + n\text{DivChamps} + n\text{WildCard}\)</span>: <code>TRUE</code> if the team won a world series, division championship, or clinched the wild card.</p></li>
@@ -356,7 +356,7 @@ Warning
 </section>
 <section id="win-percentage-over-time" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="win-percentage-over-time">Win Percentage Over Time</h3>
-<p>Were the Orioles ever “good”? The answer to this depends on how you define “good”. Suppose that “good” just means a winning record (i.e., <code>Win_percent &gt; 50</code>). If this is the case, then the Orioles were a “good” team for 46 of the 122 seasons examined here. That is, in <span class="math inline">\(38\%\)</span> of their seasons, the Orioles had a winning record (or they had a losing record for <span class="math inline">\(62\%\)</span> of seasons). While this certainly isn’t that impressive over the long run, the Orioles were actually very good during mid-60’s to mid 80’s (see <span class="citation" data-cites="ONair_2023">(<a href="#ref-ONair_2023" role="doc-biblioref">O’Nair 2023</a>)</span> for a list of the best Orioles teams ever). In fact, they had a winning record for 20 of their 21 seasons (<span class="math inline">\(95\%\)</span>) between 1965 and 1985 and won 3 world series and 7 division championships. This was the golden age for the Baltimore Orioles, and was in no small part due to their excellent roster of future hall-of-famers. The Orioles have been less consistent in the 2000’s; aside from a few winning seasons, such as the recent 2023 season which culminated in <span class="math inline">\(&gt;\)</span> 100 wins (one of only 6 occurrences in franchise history; <strong>see table 1</strong>) and a division title, they have only obtained winning record for 6 out of the 24 seasons (<span class="math inline">\(25\%\)</span>) between 2000 and 2023.</p>
+<p>Were the Orioles ever “good”? The answer to this depends on how you define “good”. Suppose that “good” just means a winning record (i.e., <code>Win_percent &gt; 50</code>). If this is the case, then the Orioles were a “good” team for 46 of the 122 seasons examined here. That is, in <span class="math inline">\(38\%\)</span> of their seasons, the Orioles had a winning record (or they had a losing record for <span class="math inline">\(62\%\)</span> of seasons). While this certainly isn’t that impressive over the long run, the Orioles were actually very good during mid-60’s to mid 80’s (see <span class="citation" data-cites="ONair_2023">O’Nair (<a href="#ref-ONair_2023" role="doc-biblioref">2023</a>)</span> for a list of the best Orioles teams ever). In fact, they had a winning record for 20 of their 21 seasons (<span class="math inline">\(95\%\)</span>) between 1965 and 1985 and won 3 world series and 7 division championships. This was the golden age for the Baltimore Orioles, and was in no small part due to their excellent roster of future hall-of-famers. The Orioles have been less consistent in the 2000’s, obtaining a winning record for only 6 out of the 24 seasons (<span class="math inline">\(25\%\)</span>) between 2000 and 2023. Notably, however, their recent 2023 season culminated in a division title and <span class="math inline">\(&gt;\)</span> 100 wins, the latter of which has occurred only 6 times in franchise history (see <strong>margin table 1</strong>)!</p>
 <div class="cell page-columns page-full">
 <details>
 <summary>Code</summary>
@@ -466,7 +466,7 @@ Warning
 </section>
 <section id="hit-frequency-over-time" class="level3">
 <h3 class="anchored" data-anchor-id="hit-frequency-over-time">Hit Frequency Over Time</h3>
-<p>As we can see below, different types of hits were more popular (or more feasible) during specific time periods of the team’s history. It is clear that the single has always been the most common type of hit, although there has been a somewhat consistent decrease over time. The frequency of double has fluctuated quite a bit over time. In my opinion, the most interesting pattern here is the decline of the triple and rise of the home run. From 1900 - 1920, the triple was at its peak frequency of around 11 per 1000 plate appearance. Since then, however, it has been on the consistent decline to where it sits today at around 3 per 1000 plate appearance. One sensible explanation for this decline is that players are now hitting home runs instead of triples. Indeed, home runs have become much, much more prevalent compared to the early days, rising from around 3 per 1000 at bats from 1900 - 1920 to around 34 per 1000 at bats in the present day. This striking increase in frequency is a known phenomenon and is seen throughout the entire league <span class="citation" data-cites="Baseball_Almanac">(<a href="#ref-Baseball_Almanac" role="doc-biblioref">Baseball Almanac, n.d.</a>)</span>. Experts believe this can be partly explained by faster pitching <span class="citation" data-cites="Sheinin_2019">(<a href="#ref-Sheinin_2019" role="doc-biblioref">Sheinin 2019</a>)</span> (which means greater exit velocity when the ball is hit).</p>
+<p>As we can see below, different types of hits were more popular (or more feasible) during specific time periods of the team’s history. It is clear that the single has always been the most common type of hit, although there has been a somewhat consistent decrease over time. The frequency of double has fluctuated quite a bit over time. In my opinion, the most interesting pattern here is the decline of the triple and rise of the home run. From 1900 - 1920, the triple was at its peak frequency of around 11 per 1000 plate appearance. Since then, however, it has been on the consistent decline to where it sits today at around 3 per 1000 plate appearance. One sensible explanation for this decline is that players are now hitting home runs instead of triples. Indeed, home runs have become much, much more prevalent compared to the early days, rising from around 3 per 1000 at bats from 1900 - 1920 to around 34 per 1000 at bats in the present day. This striking increase in frequency is a known phenomenon and is seen throughout the entire league <span class="citation" data-cites="Baseball_Almanac">(<a href="#ref-Baseball_Almanac" role="doc-biblioref">Baseball Almanac, n.d.</a>)</span>. Experts believe this is partly due to changes in pitching strategy <span class="citation" data-cites="Sheinin_2019">(<a href="#ref-Sheinin_2019" role="doc-biblioref">Sheinin 2019</a>)</span>, which can impact the exit velocity and launch angle when a ball is hit.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -493,7 +493,7 @@ Warning
 </section>
 <section id="overall-batting-performance-over-time" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="overall-batting-performance-over-time">Overall Batting Performance Over Time</h3>
-<p>Do more home runs mean greater team batting averages? Surprisingly, no. While batters today are certainly hitting the ball further than they were in the early days, they are also striking out more. Perhaps this is due to a greater swing tendency in batters and better pitching from pitchers; I will return to this later. Does consistent batting averages mean that batters have not gotten better at batting? Absolutely not. As we can see, slugging has actually risen quite a bit since early days (see <strong>tables 2 &amp; 3</strong> for top five best and worst seasons for SLG). This makes sense because slugging, unlike batting average, places a greater weight on hits that result in more bases, and so the increase in slugging is due, in part, to the exploding home run rate. Similar to slugging, OPS has increased through the years. Again, this makes sense because OPS includes slugging in its calculation. The other part of OPS is on bases percentage (OBP), which reflects how often players make hits, gets walked, hit by a pitch, etc. The trajectory in the frequency of the latter two outcomes over the years are covered in the next section.</p>
+<p>Do more home runs mean greater team batting averages? Surprisingly, no. While batters today are certainly hitting the ball further than they were in the early days, they are also striking out more. Perhaps this is due to a greater swing tendency in batters and better pitching from pitchers; I will return to this later. Does consistent batting averages mean that batters have not gotten better at batting? Absolutely not. As we can see, slugging has actually risen quite a bit since early days (see <strong>margin tables 2 &amp; 3</strong> for top five best and worst seasons for SLG). This makes sense because slugging, unlike batting average, places a greater weight on hits that result in more bases, and so the increase in slugging is due, in part, to the exploding home run rate. Similar to slugging, OPS has increased through the years. Again, this makes sense because OPS includes slugging in its calculation. The other part of OPS is on bases percentage (OBP), which reflects how often players make hits, gets walked, hit by a pitch, etc. The trajectory in the frequency of the latter two outcomes over the years are covered in the next section.</p>
 <p>The last thing I want to point out here is the batting performance of the St.Louis Browns in the 1920’s. As we can see, this was an extremely productive time for the Brown’s batting-wise, with the highest BA, OBP, and OPS in franchise history occurring in the 1922 season. This batting productivity was certainly due not to home runs, but rather to a higher frequency of singles (195 per 1000 PA) and triples (15 per 1000 PA) and a similar frequency of doubles (48 per 1000 PA) compared to today’s standards (144, 5, and 51, in the 2023 season, respectively).</p>
 <div class="cell page-columns page-full">
 <details>
@@ -666,13 +666,14 @@ Warning
 </div>
 </div>
 </section>
-<section id="data-dictionary" class="level3">
-<h3 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h3>
+</section>
+<section id="data-dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>
 <ul>
-<li><p><code>Rk</code>: Used for ordering the season. <code>Rk = 1</code> is the most recent season.</p></li>
-<li><p><code>Season</code>: The season year</p></li>
+<li><p><code>Rk</code>: Used for ordering the seasons. <code>Rk = 1</code> is the most recent season.</p></li>
+<li><p><code>Season</code>: The year associated with a given season</p></li>
 <li><p><code>Team</code>: The baseball team. <code>BAL</code> for Baltimore, <code>SLB</code> for St.&nbsp;Louis, <code>MLA</code> for Milwaukee</p></li>
-<li><p><code>Lg</code>: The leauge the team played during a given season. <code>AL</code> means American League.</p></li>
+<li><p><code>Lg</code>: The league the team played in during a given season. <code>AL</code> means American League.</p></li>
 <li><p><code>W</code>, <code>L</code>, <code>GP</code>: Number of wins, losses, and games played for a given season, respectively.</p></li>
 <li><p><code>Bat#</code>: Number of batters the team had in rotation during a given season.</p></li>
 <li><p><code>PA</code>: Number of plate appearances in a season.</p></li>
@@ -694,19 +695,19 @@ Warning
 <li><p><code>World_Series</code>, <code>Div_Champ</code>, <code>Wild_Card</code>: set to <code>1</code> if team won the World Series, Division title, or Wild card, respectively. Otherwise set to <code>0</code>.</p></li>
 </ul>
 </section>
-<section id="list-of-functions" class="level3">
-<h3 class="anchored" data-anchor-id="list-of-functions">List of Functions</h3>
+<section id="list-of-functions" class="level2">
+<h2 class="anchored" data-anchor-id="list-of-functions">List of Functions</h2>
 <p>For this analysis, I used the following packages and functions in R:</p>
 <ul>
 <li><p><code>readxl</code>: <code>read_excel()</code></p></li>
 <li><p><code>dplyr</code>: <code>glimpse()</code>, <code>mutate()</code>, <code>filter()</code>, <code>select()</code>, <code>pivot_longer()</code>, <code>arrange()</code>, <code>head()</code></p></li>
 <li><p><code>ggplot2</code>: <code>ggplot()</code>, <code>geom_point()</code>, <code>geom_smooth()</code>, <code>geom_hline()</code>, <code>geom_vline()</code>, <code>theme_minimal()</code>, <code>theme()</code>, <code>stat_smooth()</code>, <code>annotate()</code>, <code>scale_color_manual()</code></p></li>
+<li><p><code>patchwork</code>: <code>plot_layout()</code>, <code>plot_annotation()</code></p></li>
 <li><p><code>knitr</code>: <code>kable()</code></p></li>
 </ul>
 
 
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
@@ -723,10 +724,7 @@ O’Nair, Michael. 2023. <span>“The Best Teams the Baltimore Orioles Ever Prod
 Sheinin, Dave. 2019. <span>“Velocity Is Strangling Baseball - and Its Grip Keeps Tightening.”</span> <em>The Washington Post</em>. WP Company. <a href="https://www.washingtonpost.com/sports/2019/05/21/velocity-is-strangling-baseball-its-grip-keeps-tightening/">https://www.washingtonpost.com/sports/2019/05/21/velocity-is-strangling-baseball-its-grip-keeps-tightening/</a>.
 </div>
 <div id="ref-Stathead" class="csl-entry" role="listitem">
-<span>“Stathead Team Batting.”</span> n.d. <em>Stathead.com</em>. <a href="https://stathead.com/baseball/team-batting-season-finder.cgi?request=1&amp;amp;team_id=BAL">https://stathead.com/baseball/team-batting-season-finder.cgi?request=1&amp;amp;team_id=BAL</a>.
-</div>
-<div id="ref-Virtual_Backgrounds" class="csl-entry" role="listitem">
-<span>“Virtual Backgrounds.”</span> n.d. <em>Virtual Backgrounds</em>. <a href="https://virtualbackgrounds.site/background/oriole-park-at-camden-yards-ballpark/">https://virtualbackgrounds.site/background/oriole-park-at-camden-yards-ballpark/</a>.
+<span>“Stathead Baseball.”</span> n.d. <em>Stathead</em>. <a href="https://stathead.com/baseball/team-batting-season-finder.cgi?request=1&amp;amp;team_id=BAL">https://stathead.com/baseball/team-batting-season-finder.cgi?request=1&amp;amp;team_id=BAL</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
