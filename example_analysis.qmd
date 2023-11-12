@@ -39,7 +39,7 @@ This analysis is intended for anyone who is interested in baseball history. Even
 ### Data Source
 The data for this analysis were obtained from [@Stathead], which provides endless sports data on team and player performances at the game and season levels. As part of my analysis, I wanted to isolate seasons that corresponded to winning the world-series, the division, or the wildcard. I was able to determine which seasons these were by referencing [@Wikipedia_2023].
 
-I decided to create my own data dictionary. You may find that at the end of this article.
+I decided to create my own data dictionary. You can find that at the end of this article.
 
 ### Getting Started
 For this analysis, I will use functions from the `tidyverse`, `readxl`, `patchwork`, and `knitr` libraries in R. 
@@ -51,7 +51,7 @@ library("patchwork")
 library("knitr")
 ```
 
-The data were downloaded from [@Stathead] and will be imported into R using the `read_excel` function.
+The data were downloaded from [@Stathead] and will be imported into R using the `read_excel` function. Below is a glimpse of the dataset.
 
 ```{r}
 bmore.data.raw <- read_excel("./data/baltimore_orioles.xlsx")
