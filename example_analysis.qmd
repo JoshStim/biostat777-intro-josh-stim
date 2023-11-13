@@ -3,6 +3,7 @@ title: "Example analysis"
 format:
   html:
     code-fold: true
+    code-tools: true
 bibliography: my-refs.bib
 ---
 
@@ -81,11 +82,11 @@ The raw data does not include classical baseball statistics such as batting aver
   
   - `BA` $= \frac{H}{AB}$: The proportion of at bats that resulted in a hit
   
-  - `SLG` $= \frac{nS + 2\cdot nD + 3\cdot nT + 4\cdot nHR}{AB}$: The average number of bases obtained through a hit for each at bat.
+  - `SLG` $= \frac{S + 2\cdot D + 3\cdot Tr + 4\cdot HR}{AB}$: The average number of bases obtained through a hit for each at bat.
   
   - `OPS` $= OBP + SLG$: On base percentage plus slugging.
   
-  - `anyAward` $= n\text{WorldSeries} + n\text{DivChamps} + n\text{WildCard}$: `TRUE` if the team won a world series, division championship, or clinched the wild card.
+  - `anyAward` $= \text{WorldSeries} + \text{DivChamps} + \text{WildCard}$: `TRUE` if the team won a world series, division championship, or clinched the wild card during a given season.
 
 ```{r}
 bmore.data.mod <- bmore.data.raw %>%
