@@ -268,7 +268,7 @@ bmore.data.mod %>%
   
 ```
 
-### Summary
+## Summary
 In this analysis, we looked at the historical batting statistics of the Baltimore Orioles. We found that team batting performance varied considerably over time, and the nature of this variation depended on the batting metric. Perhaps most notably, homerun frequency has risen steadily over the years, whereas triples have been on the decline. There are many factors that could potentially contribute to this variation, such as changes in team quality, league-wide rules, and gameplay tendencies. Further analysis is needed to enumerate these factors and quantify their effects on batting performance.
 
 ## Data Dictionary
