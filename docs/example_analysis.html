@@ -176,6 +176,7 @@ div.csl-indent {
   <li><a href="#overall-batting-performance-over-time" id="toc-overall-batting-performance-over-time" class="nav-link" data-scroll-target="#overall-batting-performance-over-time">Overall Batting Performance Over Time</a></li>
   <li><a href="#non-hit-batting-outcomes-over-time" id="toc-non-hit-batting-outcomes-over-time" class="nav-link" data-scroll-target="#non-hit-batting-outcomes-over-time">Non-hit Batting Outcomes Over Time</a></li>
   </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#data-dictionary" id="toc-data-dictionary" class="nav-link" data-scroll-target="#data-dictionary">Data Dictionary</a></li>
   <li><a href="#list-of-functions" id="toc-list-of-functions" class="nav-link" data-scroll-target="#list-of-functions">List of Functions</a></li>
   </ul>
@@ -677,6 +678,10 @@ Warning
 </div>
 </div>
 </section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this analysis, we looked at the historical batting statistics of the Baltimore Orioles. We found that team batting performance varied considerably over time, and the nature of this variation depended on the batting metric. Perhaps most notably, homerun frequency has risen steadily over the years, whereas triples have been on the decline. There are many factors that could potentially contribute to this variation, such as changes in team quality, league-wide rules, and gameplay tendencies. Further analysis is needed to enumerate these factors and quantify their effects on batting performance.</p>
 </section>
 <section id="data-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>
@@ -1294,67 +1299,70 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-278"><a href="#cb12-278" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb12-279"><a href="#cb12-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-280"><a href="#cb12-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-281"><a href="#cb12-281" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Dictionary</span></span>
-<span id="cb12-282"><a href="#cb12-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-283"><a href="#cb12-283" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Rk`</span>: Used for ordering the seasons. <span class="in">`Rk = 1`</span> is the most recent season.</span>
-<span id="cb12-284"><a href="#cb12-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-285"><a href="#cb12-285" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Season`</span>: The year associated with a given season</span>
-<span id="cb12-286"><a href="#cb12-286" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-287"><a href="#cb12-287" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Team`</span>: The baseball team. <span class="in">`BAL`</span> for Baltimore, <span class="in">`SLB`</span> for St. Louis, <span class="in">`MLA`</span> for Milwaukee</span>
-<span id="cb12-288"><a href="#cb12-288" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-289"><a href="#cb12-289" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Lg`</span>: The league the team played in during a given season. <span class="in">`AL`</span> means American League.</span>
-<span id="cb12-290"><a href="#cb12-290" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-291"><a href="#cb12-291" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`W`</span>, <span class="in">`L`</span>, <span class="in">`GP`</span>: Number of wins, losses, and games played for a given season, respectively.</span>
-<span id="cb12-292"><a href="#cb12-292" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-293"><a href="#cb12-293" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Bat#`</span>: Number of batters the team had in rotation during a given season.</span>
-<span id="cb12-294"><a href="#cb12-294" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-295"><a href="#cb12-295" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`PA`</span>: Number of plate appearances in a season.</span>
-<span id="cb12-296"><a href="#cb12-296" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-297"><a href="#cb12-297" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`AB`</span>: Number of at-bats in a season.</span>
-<span id="cb12-298"><a href="#cb12-298" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-299"><a href="#cb12-299" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`R`</span>: Number of runs scored in a season.</span>
-<span id="cb12-300"><a href="#cb12-300" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-301"><a href="#cb12-301" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`H`</span>: Number of hits in a season.</span>
-<span id="cb12-302"><a href="#cb12-302" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-303"><a href="#cb12-303" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`single`</span>, <span class="in">`double`</span>, <span class="in">`triple`</span>, <span class="in">`HR`</span>: Number of singles, double, triples, and homeruns in a season, respectively.</span>
-<span id="cb12-304"><a href="#cb12-304" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-305"><a href="#cb12-305" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`RBI`</span>: Number of "runs batted in" during a given season.</span>
-<span id="cb12-306"><a href="#cb12-306" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-307"><a href="#cb12-307" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`SB`</span>: Number of stolen bases in a season.</span>
-<span id="cb12-308"><a href="#cb12-308" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-309"><a href="#cb12-309" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`CS`</span>: Number of times a player was caught stealing during a season.</span>
-<span id="cb12-310"><a href="#cb12-310" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-311"><a href="#cb12-311" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`BB`</span>: Number of batter "base-on-balls" (i.e., walks) in a season.</span>
-<span id="cb12-312"><a href="#cb12-312" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-313"><a href="#cb12-313" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`SO`</span>: Number of batter strike outs in a season.</span>
-<span id="cb12-314"><a href="#cb12-314" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-315"><a href="#cb12-315" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`OBP`</span>: On base percentage (i.e., percent of plate appearances where batter gets on base) in a season.</span>
-<span id="cb12-316"><a href="#cb12-316" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-317"><a href="#cb12-317" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`GIDP`</span>: Number of ground into double play occurrences in a season.</span>
-<span id="cb12-318"><a href="#cb12-318" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-319"><a href="#cb12-319" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`HBP`</span>: Number of hit by pitch occurrences in a season.</span>
-<span id="cb12-320"><a href="#cb12-320" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-321"><a href="#cb12-321" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`SH`</span>, <span class="in">`SF`</span>: Number of sacrifice hits and sacrifice flys, respectively.</span>
-<span id="cb12-322"><a href="#cb12-322" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-323"><a href="#cb12-323" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`IBB`</span>: Number of intentional "base-on-balls" (i.e., intentional walks) in a season.</span>
-<span id="cb12-324"><a href="#cb12-324" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-325"><a href="#cb12-325" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`LOB`</span>: Number of runners left on base in a season.</span>
-<span id="cb12-326"><a href="#cb12-326" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-327"><a href="#cb12-327" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`World_Series`</span>, <span class="in">`Div_Champ`</span>, <span class="in">`Wild_Card`</span>: set to <span class="in">`1`</span> if team won the World Series, Division title, or Wild card, respectively. Otherwise set to <span class="in">`0`</span>.</span>
-<span id="cb12-328"><a href="#cb12-328" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-329"><a href="#cb12-329" aria-hidden="true" tabindex="-1"></a><span class="fu">## List of Functions</span></span>
-<span id="cb12-330"><a href="#cb12-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-331"><a href="#cb12-331" aria-hidden="true" tabindex="-1"></a>For this analysis, I used the following packages and functions in R:</span>
-<span id="cb12-332"><a href="#cb12-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-333"><a href="#cb12-333" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`readxl`</span>: <span class="in">`read_excel()`</span></span>
-<span id="cb12-334"><a href="#cb12-334" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-335"><a href="#cb12-335" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`dplyr`</span>: <span class="in">`glimpse()`</span>, <span class="in">`mutate()`</span>, <span class="in">`filter()`</span>, <span class="in">`select()`</span>, <span class="in">`pivot_longer()`</span>, <span class="in">`arrange()`</span>, <span class="in">`head()`</span></span>
-<span id="cb12-336"><a href="#cb12-336" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-337"><a href="#cb12-337" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`ggplot2`</span>: <span class="in">`ggplot()`</span>, <span class="in">`geom_point()`</span>, <span class="in">`geom_smooth()`</span>, <span class="in">`geom_hline()`</span>, <span class="in">`geom_vline()`</span>, <span class="in">`theme_minimal()`</span>, <span class="in">`theme()`</span>, <span class="in">`stat_smooth()`</span>, <span class="in">`annotate()`</span>, <span class="in">`scale_color_manual()`</span>, <span class="in">`scale_x_discrete()`</span></span>
-<span id="cb12-338"><a href="#cb12-338" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-339"><a href="#cb12-339" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`patchwork`</span>: <span class="in">`plot_layout()`</span>, <span class="in">`plot_annotation()`</span></span>
-<span id="cb12-340"><a href="#cb12-340" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-341"><a href="#cb12-341" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`knitr`</span>: <span class="in">`kable()`</span></span>
+<span id="cb12-281"><a href="#cb12-281" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb12-282"><a href="#cb12-282" aria-hidden="true" tabindex="-1"></a>In this analysis, we looked at the historical batting statistics of the Baltimore Orioles. We found that team batting performance varied considerably over time, and the nature of this variation depended on the batting metric. Perhaps most notably, homerun frequency has risen steadily over the years, whereas triples have been on the decline. There are many factors that could potentially contribute to this variation, such as changes in team quality, league-wide rules, and gameplay tendencies. Further analysis is needed to enumerate these factors and quantify their effects on batting performance.</span>
+<span id="cb12-283"><a href="#cb12-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-284"><a href="#cb12-284" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Dictionary</span></span>
+<span id="cb12-285"><a href="#cb12-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-286"><a href="#cb12-286" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Rk`</span>: Used for ordering the seasons. <span class="in">`Rk = 1`</span> is the most recent season.</span>
+<span id="cb12-287"><a href="#cb12-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-288"><a href="#cb12-288" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Season`</span>: The year associated with a given season</span>
+<span id="cb12-289"><a href="#cb12-289" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-290"><a href="#cb12-290" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Team`</span>: The baseball team. <span class="in">`BAL`</span> for Baltimore, <span class="in">`SLB`</span> for St. Louis, <span class="in">`MLA`</span> for Milwaukee</span>
+<span id="cb12-291"><a href="#cb12-291" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-292"><a href="#cb12-292" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Lg`</span>: The league the team played in during a given season. <span class="in">`AL`</span> means American League.</span>
+<span id="cb12-293"><a href="#cb12-293" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-294"><a href="#cb12-294" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`W`</span>, <span class="in">`L`</span>, <span class="in">`GP`</span>: Number of wins, losses, and games played for a given season, respectively.</span>
+<span id="cb12-295"><a href="#cb12-295" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-296"><a href="#cb12-296" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Bat#`</span>: Number of batters the team had in rotation during a given season.</span>
+<span id="cb12-297"><a href="#cb12-297" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-298"><a href="#cb12-298" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`PA`</span>: Number of plate appearances in a season.</span>
+<span id="cb12-299"><a href="#cb12-299" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-300"><a href="#cb12-300" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`AB`</span>: Number of at-bats in a season.</span>
+<span id="cb12-301"><a href="#cb12-301" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-302"><a href="#cb12-302" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`R`</span>: Number of runs scored in a season.</span>
+<span id="cb12-303"><a href="#cb12-303" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-304"><a href="#cb12-304" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`H`</span>: Number of hits in a season.</span>
+<span id="cb12-305"><a href="#cb12-305" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-306"><a href="#cb12-306" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`single`</span>, <span class="in">`double`</span>, <span class="in">`triple`</span>, <span class="in">`HR`</span>: Number of singles, double, triples, and homeruns in a season, respectively.</span>
+<span id="cb12-307"><a href="#cb12-307" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-308"><a href="#cb12-308" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`RBI`</span>: Number of "runs batted in" during a given season.</span>
+<span id="cb12-309"><a href="#cb12-309" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-310"><a href="#cb12-310" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`SB`</span>: Number of stolen bases in a season.</span>
+<span id="cb12-311"><a href="#cb12-311" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-312"><a href="#cb12-312" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`CS`</span>: Number of times a player was caught stealing during a season.</span>
+<span id="cb12-313"><a href="#cb12-313" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-314"><a href="#cb12-314" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`BB`</span>: Number of batter "base-on-balls" (i.e., walks) in a season.</span>
+<span id="cb12-315"><a href="#cb12-315" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-316"><a href="#cb12-316" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`SO`</span>: Number of batter strike outs in a season.</span>
+<span id="cb12-317"><a href="#cb12-317" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-318"><a href="#cb12-318" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`OBP`</span>: On base percentage (i.e., percent of plate appearances where batter gets on base) in a season.</span>
+<span id="cb12-319"><a href="#cb12-319" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-320"><a href="#cb12-320" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`GIDP`</span>: Number of ground into double play occurrences in a season.</span>
+<span id="cb12-321"><a href="#cb12-321" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-322"><a href="#cb12-322" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`HBP`</span>: Number of hit by pitch occurrences in a season.</span>
+<span id="cb12-323"><a href="#cb12-323" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-324"><a href="#cb12-324" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`SH`</span>, <span class="in">`SF`</span>: Number of sacrifice hits and sacrifice flys, respectively.</span>
+<span id="cb12-325"><a href="#cb12-325" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-326"><a href="#cb12-326" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`IBB`</span>: Number of intentional "base-on-balls" (i.e., intentional walks) in a season.</span>
+<span id="cb12-327"><a href="#cb12-327" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-328"><a href="#cb12-328" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`LOB`</span>: Number of runners left on base in a season.</span>
+<span id="cb12-329"><a href="#cb12-329" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-330"><a href="#cb12-330" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`World_Series`</span>, <span class="in">`Div_Champ`</span>, <span class="in">`Wild_Card`</span>: set to <span class="in">`1`</span> if team won the World Series, Division title, or Wild card, respectively. Otherwise set to <span class="in">`0`</span>.</span>
+<span id="cb12-331"><a href="#cb12-331" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-332"><a href="#cb12-332" aria-hidden="true" tabindex="-1"></a><span class="fu">## List of Functions</span></span>
+<span id="cb12-333"><a href="#cb12-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-334"><a href="#cb12-334" aria-hidden="true" tabindex="-1"></a>For this analysis, I used the following packages and functions in R:</span>
+<span id="cb12-335"><a href="#cb12-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-336"><a href="#cb12-336" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`readxl`</span>: <span class="in">`read_excel()`</span></span>
+<span id="cb12-337"><a href="#cb12-337" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-338"><a href="#cb12-338" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`dplyr`</span>: <span class="in">`glimpse()`</span>, <span class="in">`mutate()`</span>, <span class="in">`filter()`</span>, <span class="in">`select()`</span>, <span class="in">`pivot_longer()`</span>, <span class="in">`arrange()`</span>, <span class="in">`head()`</span></span>
+<span id="cb12-339"><a href="#cb12-339" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-340"><a href="#cb12-340" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`ggplot2`</span>: <span class="in">`ggplot()`</span>, <span class="in">`geom_point()`</span>, <span class="in">`geom_smooth()`</span>, <span class="in">`geom_hline()`</span>, <span class="in">`geom_vline()`</span>, <span class="in">`theme_minimal()`</span>, <span class="in">`theme()`</span>, <span class="in">`stat_smooth()`</span>, <span class="in">`annotate()`</span>, <span class="in">`scale_color_manual()`</span>, <span class="in">`scale_x_discrete()`</span></span>
+<span id="cb12-341"><a href="#cb12-341" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-342"><a href="#cb12-342" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`patchwork`</span>: <span class="in">`plot_layout()`</span>, <span class="in">`plot_annotation()`</span></span>
+<span id="cb12-343"><a href="#cb12-343" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-344"><a href="#cb12-344" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`knitr`</span>: <span class="in">`kable()`</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

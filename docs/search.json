@@ -61,5 +61,12 @@
     "title": "Example analysis",
     "section": "List of Functions",
     "text": "List of Functions\nFor this analysis, I used the following packages and functions in R:\n\nreadxl: read_excel()\ndplyr: glimpse(), mutate(), filter(), select(), pivot_longer(), arrange(), head()\nggplot2: ggplot(), geom_point(), geom_smooth(), geom_hline(), geom_vline(), theme_minimal(), theme(), stat_smooth(), annotate(), scale_color_manual(), scale_x_discrete()\npatchwork: plot_layout(), plot_annotation()\nknitr: kable()"
+  },
+  {
+    "objectID": "example_analysis.html#summary",
+    "href": "example_analysis.html#summary",
+    "title": "Example analysis",
+    "section": "Summary",
+    "text": "Summary\nIn this analysis, we looked at the historical batting statistics of the Baltimore Orioles. We found that team batting performance varied considerably over time, and the nature of this variation depended on the batting metric. Perhaps most notably, homerun frequency has risen steadily over the years, whereas triples have been on the decline. There are many factors that could potentially contribute to this variation, such as changes in team quality, league-wide rules, and gameplay tendencies. Further analysis is needed to enumerate these factors and quantify their effects on batting performance."
   }
 ]
